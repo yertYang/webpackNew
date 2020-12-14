@@ -1,0 +1,141 @@
+.video {
+  position: relative;
+  overflow: hidden;
+}
+
+.video-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-controls {
+  width: 100%;
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.8);
+  transition: .5s;
+}
+
+.video-progress {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  background: #222223;
+}
+
+.video-progress-now {
+  width: 0;
+  height: 100%;
+  background: #ff6a03;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+}
+
+.video-progress-success {
+  width: 0;
+  height: 100%;
+  background: #666;
+}
+
+.video-progress-bar {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 0px;
+  margin-top: -4px;
+  z-index: 2;
+}
+
+.video-play {
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  margin-left: 35px;
+}
+
+.video-play i {
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.video-time {
+  float: left;
+  height: 45px;
+  line-height: 45px;
+  margin-left: 30px;
+}
+
+.video-time span {
+  font-size: 20px;
+  color: #fff;
+}
+
+.video-full {
+  float: right;
+  line-height: 45px;
+  margin-right: 20px;
+}
+
+.video-full i {
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.video-volume {
+  float: right;
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  height: 45px;
+}
+
+.video-volume i {
+  color: #fff;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.video-vol-progress {
+  width: 100px;
+  height: 5px;
+  position: relative;
+  background: #222223;
+}
+
+.video-vol-progress-now {
+  width: 50%;
+  height: 100%;
+  background: #ff6a03;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+}
+
+.video-vol-progress-success {
+  width: 100%;
+  height: 100%;
+  background: #666;
+}
+
+.video-vol-progress-bar {
+  height: 14px;
+  width: 14px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -7px;
+  margin-top: -4px;
+  z-index: 2;
+}

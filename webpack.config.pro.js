@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 //清理打包后的文件
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   //模块化开发
@@ -28,10 +29,37 @@ module.exports = {
     //规则
     rules: [{
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      // 配置哪些css文件不能为全局使用 
+      exclude: [
+        path.resolve(__dirname, 'src/components/')
+      ]
+    },
+    {
+      test: /\.css$/,
+      // use: ['style-loader', {
+      use: [MiniCssExtractPlugin.loader, {
+        // 设置css为模块化使用
+        loader: 'css-loader',
+        options: {
+          modules: {
+            // 让css语意化 如果不设置则为随机乱码
+            localIdentName: '[path][name]__[local]--[hash:base64:5]',
+          }
+        }
+      }],
+      // 设置为局部组件使用
+      include: [
+        path.resolve(__dirname, 'src/components/')
+      ]
     }, {
       test: /\.(eot|woff2|woff|ttf|svg)$/,
-      use: ['file-loader']
+      use: [{
+        loader: 'file-loader',
+        options: {
+          outputPath: 'iconfont'
+        }
+      }]
     }, {
       test: /\.ts$/,
       use: ['ts-loader'],
@@ -43,8 +71,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new CleanWebpackPlugin()
+    //1.执行方法
+    new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin()
   ],
   //设置为开发模式
-  mode: "development"
+  mode: "production"
 }
